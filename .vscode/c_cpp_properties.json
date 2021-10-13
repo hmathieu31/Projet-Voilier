@@ -1,0 +1,18 @@
+{
+    "configurations": [
+        {
+            "name": "Linux",
+            "includePath": [
+                "${default}",
+                "${workspaceFolder}/**",
+                "/mnt/d/Program Files (x86)/Keil 5 Packs/Keil/STM32F1xx_DFP/2.3.0/Device/Include/*",
+                "/mnt/d/Program Files (x86)/Keil 5 Packs/ARM/CMSIS/5.8.0/CMSIS/Core/Include"
+            ],
+            "compilerPath": "/usr/bin/gcc",
+            "cStandard": "gnu17",
+            "cppStandard": "gnu++14",
+            "intelliSenseMode": "linux-gcc-x64"
+        }
+    ],
+    "version": 4
+}
