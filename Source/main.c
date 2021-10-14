@@ -5,8 +5,14 @@
 #include "set_Sail.h"
 #include "stdio.h"
 
+int sailAngleGLOBAL;
+
+
 int main(void){
-	printf("Sail angle %d, \n", 12);
+
+	int windAngle = getAngle(20);
+
+	sailAngleGLOBAL = calcSailAngle(windAngle);
 	
 	while(1) {
 		;
