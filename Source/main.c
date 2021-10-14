@@ -3,16 +3,15 @@
 #include "Driver_GPIO.h"
 #include "Acquisition_Girouette.h"
 #include "set_Sail.h"
-#include "stdio.h"
+
 
 int sailAngleGLOBAL;
 
-
 int main(void){
 
-	int windAngle = getAngle(20);
+	int windAngle = getAngle(275);
 
-	sailAngleGLOBAL = calcSailAngle(windAngle);
+	sailAngleGLOBAL = calcSailsAngle(windAngle);
 	
 	while(1) {
 		;

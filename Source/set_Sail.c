@@ -11,7 +11,9 @@ int calcSailsAngle(int girAngle) {
     }
 
     if(a < 45) sailsAngle = 0; // Cases where the sail must be fully trimmed
-    else sailsAngle = (2/3) * a - 30; // Affine func : x -> 2/3 x - 30 for sailsAngle
+    else sailsAngle = (2 * a)/3 - 30; // Affine func : x -> 2/3 x - 30 for sailsAngle
+
+    return sailsAngle;
 }
 
 void setServo(int sailsAngle) {
