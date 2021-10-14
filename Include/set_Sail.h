@@ -11,18 +11,22 @@
 
 #include "stm32f10x.h"
 
+#define TIMER_PWM TIM2
+#define CHANNEL_PWM 1
+#define GPIO_PWM GPIOA
+#define PIN_PWM 0
+
 /**
  * @brief Calculates the angle to trim the sails in function of wind angle
  * 
  * @param girAngle Wind angle returned by acq_Girouette
  * @return int Angle of sails
  */
-int calcSailsAngle(int girAngle);
+int sSail_calc_angle(int girAngle);
 
 /**
  * @brief Emits the PWM to set the servomotor to angle according to sailsAngle
  * 
  * @param sailsAngle Angle to trim the sails to
  */
-void setServo(int sailsAngle);
-
+void sSail_set_servo(int sailsAngle);

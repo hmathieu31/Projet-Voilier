@@ -1,19 +1,17 @@
-#include "stm32f10x.h"
-#include "MyTimer.h"
-#include "Driver_GPIO.h"
 #include "Acquisition_Girouette.h"
 #include "set_Sail.h"
-
+#include "stm32f10x.h"
 
 int sailAngleGLOBAL;
 
-int main(void){
+int main(void) {
 
-	int windAngle = getAngle(275);
+    int windAngle = acqGir_get_angle(260);
 
-	sailAngleGLOBAL = calcSailsAngle(windAngle);
-	
-	while(1) {
-		;
-	}
+    sailAngleGLOBAL = sSail_calc_angle(windAngle);
+    sSail_set_servo(sailAngleGLOBAL);
+
+    while (1) {
+        ;
+    }
 }

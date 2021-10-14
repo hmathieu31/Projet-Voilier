@@ -5,4 +5,4 @@
  * 
  * @return Angle between 0 - 360
  */
-int getAngle(int a);
+int acqGir_get_angle(int a);

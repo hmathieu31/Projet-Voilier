@@ -1,5 +1,5 @@
 #include "Acquisition_Girouette.h"
 
-int getAngle(int a) {
+int acqGir_get_angle(int a) {
     return a;
 }
