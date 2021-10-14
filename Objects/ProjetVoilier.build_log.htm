@@ -1,0 +1,186 @@
+<html>
+<body>
+<pre>
+<h1>µVision Build Log</h1>
+<h2>Tool Versions:</h2>
+IDE-Version: µVision V5.34.0.0
+Copyright (C) 2021 ARM Ltd and ARM Germany GmbH. All rights reserved.
+License Information: CSN CSN, INSA de Toulouse, LIC=----
+ 
+Tool Versions:
+Toolchain:       MDK-Lite  Version: 5.34.0.0
+Toolchain Path:  C:\Keil_v5\ARM\ARMCLANG\Bin
+C Compiler:      ArmClang.exe V6.16
+Assembler:       Armasm.exe V6.16
+Linker/Locator:  ArmLink.exe V6.16
+Library Manager: ArmAr.exe V6.16
+Hex Converter:   FromElf.exe V6.16
+CPU DLL:         SARMCM3.DLL V5.34.0.0
+Dialog DLL:      DARMSTM.DLL V1.68.0.0
+Target DLL:      UL2CM3.DLL V1.163.9.0
+Dialog DLL:      TARMSTM.DLL V1.66.0.0
+ 
+<h2>Project:</h2>
+U:\Windows\Bureau\ProjetTPMicro\ProjetVoilier.uvprojx
+Project File Date:  10/14/2021
+
+<h2>Output:</h2>
+*** Using Compiler 'V6.16', folder: 'C:\Keil_v5\ARM\ARMCLANG\Bin'
+Rebuild target 'Simule'
+assembling startup_stm32f10x_md.s...
+Source/MyADC.c(11): warning: no newline at end of file [-Wnewline-eof]
+}
+ ^
+Source/MyADC.c(4): warning: unused parameter 'Channel' [-Wunused-parameter]
+float Init_ADC_Single_Conv(ADC_TypeDef *ADC, char Channel){
+                                                  ^
+Source/MyADC.c(11): warning: non-void function does not return a value [-Wreturn-type]
+}
+^
+3 warnings generated.
+compiling MyADC.c...
+Source/main.c(4): warning: In file included from...
+./Include\Acquisition_Girouette.h(10): warning: no newline at end of file [-Wnewline-eof]
+#endif
+      ^
+Source/main.c(6): warning: no previous prototype for function 'CallBack' [-Wmissing-prototypes]
+void CallBack(){
+     ^
+Source/main.c(6): note: declare 'static' if the function is not intended to be used outside of this translation unit
+void CallBack(){
+^
+static 
+Source/main.c(6): warning: this old-style function definition is not preceded by a prototype [-Wstrict-prototypes]
+void CallBack(){
+             ^
+Source/main.c(18): warning: '/*' within block comment [-Wcomment]
+        /* Initialization of Timer1 with period 500ms invoking function Callback /
+        ^
+Source/main.c(23): warning: '/*' within block comment [-Wcomment]
+        /* Tests of PWM *
+        ^
+5 warnings generated.
+compiling main.c...
+Source/MyTimer.c(24): warning: implicit conversion loses integer precision: 'int' to 'uint8_t' (aka 'unsigned char') [-Wimplicit-int-conversion]
+        if (Timer==TIM1){ NVIC -> ISER[0] |= 1<<25; NVIC -> IP[25] = Prio<<4;} //On autorise les interruption du timer x et on gere la prio
+                                                                   ~ ~~~~^~~
+Source/MyTimer.c(25): warning: implicit conversion loses integer precision: 'int' to 'uint8_t' (aka 'unsigned char') [-Wimplicit-int-conversion]
+        if (Timer==TIM2){ NVIC -> ISER[0] |= 1<<28; NVIC -> IP[28] = Prio<<4;}
+                                                                   ~ ~~~~^~~
+Source/MyTimer.c(26): warning: implicit conversion loses integer precision: 'int' to 'uint8_t' (aka 'unsigned char') [-Wimplicit-int-conversion]
+        if (Timer==TIM3){ NVIC -> ISER[0] |= 1<<29; NVIC -> IP[29] = Prio<<4;}
+                                                                   ~ ~~~~^~~
+Source/MyTimer.c(27): warning: implicit conversion loses integer precision: 'int' to 'uint8_t' (aka 'unsigned char') [-Wimplicit-int-conversion]
+        if (Timer==TIM4){ NVIC -> ISER[0] |= 1<<30; NVIC -> IP[30] = Prio<<4;}
+                                                                   ~ ~~~~^~~
+Source/MyTimer.c(32): warning: no previous prototype for function 'TIM1_UP_IRQHandler' [-Wmissing-prototypes]
+void TIM1_UP_IRQHandler(void){
+     ^
+Source/MyTimer.c(32): note: declare 'static' if the function is not intended to be used outside of this translation unit
+void TIM1_UP_IRQHandler(void){
+^
+static 
+Source/MyTimer.c(37): warning: no previous prototype for function 'TIM2_IRQHandler' [-Wmissing-prototypes]
+void TIM2_IRQHandler(void){
+     ^
+Source/MyTimer.c(37): note: declare 'static' if the function is not intended to be used outside of this translation unit
+void TIM2_IRQHandler(void){
+^
+static 
+Source/MyTimer.c(42): warning: no previous prototype for function 'TIM3_IRQHandler' [-Wmissing-prototypes]
+void TIM3_IRQHandler(void){
+     ^
+Source/MyTimer.c(42): note: declare 'static' if the function is not intended to be used outside of this translation unit
+void TIM3_IRQHandler(void){
+^
+static 
+Source/MyTimer.c(47): warning: no previous prototype for function 'TIM4_IRQHandler' [-Wmissing-prototypes]
+void TIM4_IRQHandler(void){
+     ^
+Source/MyTimer.c(47): note: declare 'static' if the function is not intended to be used outside of this translation unit
+void TIM4_IRQHandler(void){
+^
+static 
+Source/MyTimer.c(4): warning: no previous extern declaration for non-static variable 'pFunc' [-Wmissing-variable-declarations]
+void (* pFunc) (void);
+        ^
+Source/MyTimer.c(4): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+void (* pFunc) (void);
+^
+9 warnings generated.
+compiling MyTimer.c...
+RTE/Device/STM32F103RB/system_stm32f10x.c(167): warning: no previous extern declaration for non-static variable 'AHBPrescTable' [-Wmissing-variable-declarations]
+__I uint8_t AHBPrescTable[16] = {0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 3, 4, 6, 7, 8, 9};
+            ^
+RTE/Device/STM32F103RB/system_stm32f10x.c(167): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+__I uint8_t AHBPrescTable[16] = {0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 3, 4, 6, 7, 8, 9};
+    ^
+1 warning generated.
+compiling system_stm32f10x.c...
+Source/Driver_GPIO.c(12): warning: implicit conversion changes signedness: 'int' to 'unsigned int' [-Wsign-conversion]
+                GPIOStructPtr->GPIO->CRL &= ~(0xF << (GPIO_Pin * 4));// Resets the 4 control bits corresponding to the pin
+                                         ~~ ^~~~~~~~~~~~~~~~~~~~~~~~
+Source/Driver_GPIO.c(13): warning: implicit conversion changes signedness: 'int' to 'unsigned int' [-Wsign-conversion]
+                GPIOStructPtr->GPIO->CRL |= (GPIO_Conf << (GPIO_Pin * 4)); // Sets the mask
+                                         ~~  ~~~~~~~~~~^~~~~~~~~~~~~~~~~
+Source/Driver_GPIO.c(16): warning: implicit conversion changes signedness: 'int' to 'unsigned int' [-Wsign-conversion]
+                GPIOStructPtr->GPIO->CRH &= ~(0xF << ((GPIO_Pin - 8)*4)); // Resets the 4 control bits corresponding to the pin
+                                         ~~ ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Source/Driver_GPIO.c(17): warning: implicit conversion changes signedness: 'int' to 'unsigned int' [-Wsign-conversion]
+                GPIOStructPtr->GPIO->CRH |= (GPIO_Conf << ((GPIO_Pin - 8)*4)); // Sets the mask
+                                         ~~  ~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~
+Source/Driver_GPIO.c(2): warning: In file included from...
+./Include\Driver_GPIO.h(17): warning: padding size of 'MyGPIO_Struct' with 2 bytes to alignment boundary [-Wpadded]
+typedef struct {
+        ^
+Source/Driver_GPIO.c(23): warning: implicit conversion changes signedness: 'uint32_t' (aka 'unsigned int') to 'int' [-Wsign-conversion]
+        return (GPIO->IDR << GPIO_PIN);
+        ~~~~~~  ~~~~~~~~~~^~~~~~~~~~~
+6 warnings generated.
+compiling Driver_GPIO.c...
+Acquisition_Girouette.c(2): warning: In file included from...
+./Include\Acquisition_Girouette.h(10): warning: no newline at end of file [-Wnewline-eof]
+#endif
+      ^
+Acquisition_Girouette.c(15): warning: no newline at end of file [-Wnewline-eof]
+}
+ ^
+2 warnings generated.
+compiling Acquisition_Girouette.c...
+linking...
+Program Size: Code=804 RO-data=252 RW-data=0 ZI-data=1640  
+".\Objects\ProjetVoilier.axf" - 0 Error(s), 26 Warning(s).
+
+<h2>Software Packages used:</h2>
+
+Package Vendor: ARM
+                http://www.keil.com/pack/ARM.CMSIS.5.7.0.pack
+                ARM.CMSIS.5.7.0
+                CMSIS (Cortex Microcontroller Software Interface Standard)
+   * Component: CORE Version: 5.4.0
+
+Package Vendor: Keil
+                http://www.keil.com/pack/Keil.STM32F1xx_DFP.2.3.0.pack
+                Keil.STM32F1xx_DFP.2.3.0
+                STMicroelectronics STM32F1 Series Device Support, Drivers and Examples
+   * Component: Startup Version: 1.0.0
+
+<h2>Collection of Component include folders:</h2>
+  .\RTE\Device\STM32F103RB
+  .\RTE\_Simule
+  C:\Programdata\Keil\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include
+  C:\Programdata\Keil\Arm\Packs\Keil\STM32F1xx_DFP\2.3.0\Device\Include
+
+<h2>Collection of Component Files used:</h2>
+
+   * Component: ARM::CMSIS:CORE:5.4.0
+
+   * Component: Keil::Device:Startup:1.0.0
+      Source file:   Device\Source\ARM\STM32F1xx_OPT.s
+      Source file:   Device\Source\system_stm32f10x.c
+      Include file:  RTE_Driver\Config\RTE_Device.h
+      Source file:   Device\Source\ARM\startup_stm32f10x_md.s
+Build Time Elapsed:  00:00:01
+</pre>
+</body>
+</html>
