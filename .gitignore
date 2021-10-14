@@ -132,3 +132,5 @@ dkms.conf
 # !my_customized_scatter_file.sct
 Doxyfile.bak
 .vscode/c_cpp_properties.json
+.vscode/extensions.json
+.vscode/settings.json
