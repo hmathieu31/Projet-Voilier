@@ -15,6 +15,6 @@ int calcSailsAngle(int girAngle) {
 }
 
 void setServo(int sailsAngle) {
-    
+    ;
 }
 
