@@ -131,3 +131,17 @@ dkms.conf
 # To explicitly override the above, define any exceptions here; e.g.:
 # !my_customized_scatter_file.sct
 Doxyfile.bak
+.vscode/c_cpp_properties.json
+.vscode/extensions.json
+.vscode/settings.json
+DebugConfig/Reel_STM32F103RB_1.0.0.dbgconf
+DebugConfig/Simule_STM32F103RB_1.0.0.dbgconf
+DebugConfig/Target_1_STM32F103RB_1.0.0.dbgconf
+RTE/Device/STM32F103RB/RTE_Device.h
+RTE/Device/STM32F103RB/startup_stm32f10x_md.s
+RTE/Device/STM32F103RB/system_stm32f10x.c
+RTE/_Reel/RTE_Components.h
+RTE/_Simule/RTE_Components.h
+RTE/_Target_1/RTE_Components.h
+EventRecorderStub.scvd
+projetVoilier.uvprojx
