@@ -1,8 +1,12 @@
+#include "stm32f10x.h"
 
-/**
- * @brief Get the Angle
- * \n Dud func, To be overwritten
- * 
- * @return Angle between 0 - 360
- */
-int acqGir_get_angle(int a);
+#define TIMER_ACQ TIM3
+
+#ifndef acqGirouette
+#define acqGirouette
+
+void setTimerEncoderMode();
+void interruptAngle();
+void configGir(GPIO_TypeDef * GPIO, char pin);
+
+#endif

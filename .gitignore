@@ -340,3 +340,182 @@ Doc/html/search/pages_0.js
 Doc/html/search/search_l.png
 Doc/html/search/search_m.png
 Doc/html/search/search_r.png
+# Prerequisites
+*.d
+
+# Object files
+*.o
+*.ko
+*.obj
+*.elf
+
+# Linker output
+*.ilk
+*.map
+*.exp
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Libraries
+*.lib
+*.a
+*.la
+*.lo
+
+# Shared objects (inc. Windows DLLs)
+*.dll
+*.so
+*.so.*
+*.dylib
+
+# Executables
+*.exe
+*.out
+*.app
+*.i*86
+*.x86_64
+*.hex
+
+# Debug files
+*.dSYM/
+*.su
+*.idb
+*.pdb
+
+# Kernel Module Compile Results
+*.mod*
+*.cmd
+.tmp_versions/
+modules.order
+Module.symvers
+Mkfile.old
+dkms.conf
+
+# A .gitignore for Keil projects.
+# Taken mostly from http://www.keil.com/support/man/docs/uv4/uv4_b_filetypes.htm
+
+# User-specific uVision files
+*.opt
+*.uvopt
+*.uvoptx
+*.uvgui
+*.uvgui.*
+*.uvguix.*
+
+# Listing files
+*.cod
+*.htm
+*.i
+*.lst
+*.map
+*.m51
+*.m66
+# define exception below if needed
+*.scr
+
+# Object and HEX files
+*.axf
+*.b[0-3][0-9]
+*.hex
+*.d
+*.crf
+*.elf
+*.hex
+*.h86
+*.lib
+*.obj
+*.o
+*.sbr
+
+# Build files
+# define exception below if needed
+*.bat
+*._ia
+*.__i
+*._ii
+
+# Generated output files
+/Listings/*
+/Objects/*
+
+# Debugger files
+# define exception below if needed
+*.ini
+
+# Other files
+*.build_log.htm
+*.cdb
+*.dep
+*.ic
+*.lin
+*.lnp
+*.orc
+# define exception below if needed
+*.pack
+# define exception below if needed
+*.pdsc
+*.plg
+# define exception below if needed
+*.sct
+*.sfd
+*.sfr
+
+# Miscellaneous
+*.tra
+*.bin
+*.fed
+*.l1p
+*.l2p
+*.iex
+
+# To explicitly override the above, define any exceptions here; e.g.:
+# !my_customized_scatter_file.sct
+Doxyfile.bak
+DebugConfig/Reel_STM32F103RB_1.0.0.dbgconf
+DebugConfig/Simule_STM32F103RB_1.0.0.dbgconf
+DebugConfig/Target_1_STM32F103RB_1.0.0.dbgconf
+RTE/Device/STM32F103RB/RTE_Device.h
+RTE/Device/STM32F103RB/startup_stm32f10x_md.s
+RTE/Device/STM32F103RB/system_stm32f10x.c
+RTE/_Reel/RTE_Components.h
+RTE/_Simule/RTE_Components.h
+RTE/_Target_1/RTE_Components.h
+EventRecorderStub.scvd
+projetVoilier.uvprojx
+Doc/html/Acquisition__Girouette_8c__incl.dot
+Doc/html/Acquisition__Girouette_8c.html
+Doc/html/acquisition__girouette_8d.html
+Doc/html/Acquisition__Girouette_8h__dep__incl.dot
+Doc/html/Acquisition__Girouette_8h_source.html
+Doc/html/Acquisition__Girouette_8h.html
+Doc/html/Driver__GPIO_8c__incl.dot
+Doc/html/Driver__GPIO_8c.html
+Doc/html/driver__gpio_8d.html
+Doc/html/main_8c__incl.dot
+Doc/html/set__Sail_8c__incl.dot
+Doc/html/set__Sail_8c.html
+Doc/html/set__sail_8d.html
+Doc/html/set__Sail_8h__dep__incl.dot
+Doc/html/set__Sail_8h__incl.dot
+Doc/html/set__Sail_8h_source.html
+Doc/html/set__Sail_8h.html
+Doc/html/search/defines_3.html
+Doc/html/search/defines_3.js
+Doc/html/search/defines_4.html
+Doc/html/search/defines_4.js
+Doc/html/search/defines_5.html
+Doc/html/search/defines_5.js
+Doc/html/search/defines_6.html
+Doc/html/search/defines_6.js
+Doc/html/search/functions_3.html
+Doc/html/search/functions_3.js
+Doc/html/search/functions_4.html
+Doc/html/search/functions_4.js
+Doc/html/search/variables_2.html
+Doc/html/search/variables_2.js
+.vscode/c_cpp_properties.json
+.vscode/c_cpp_properties.json
+.vscode/extensions.json
+.vscode/settings.json

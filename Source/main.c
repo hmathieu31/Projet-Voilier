@@ -6,12 +6,10 @@ int sailAngleGLOBAL;
 
 int main(void) {
 
+    setTimerEncoderMode(TIM2);
+
     int windAngle = acqGir_get_angle(260);
 
     sailAngleGLOBAL = sSail_calc_angle(windAngle);
     sSail_set_servo(sailAngleGLOBAL);
 
-    while (1) {
-        ;
-    }
-}
