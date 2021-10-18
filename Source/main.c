@@ -5,8 +5,8 @@
 
 int main(void) {
 
-  setTimerEncoderMode();
-  //CONFIGURER LE GPIO configGir(GPIOA, 8);
-	interruptAngle();
+  acqGir_set_timer_encoderMode();
+  //CONFIGURER LE GPIO acqGir_config_Gir(GPIOA, 8);
+	acqGir_interrupt_angle(TIM4);
 
 }

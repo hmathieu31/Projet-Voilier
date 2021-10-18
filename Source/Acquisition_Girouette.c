@@ -1,12 +1,12 @@
 #include "stm32f10x.h"
-#include "Acquisition_Girouette.h"
+#include "acquisition_Girouette.h"
 #include "set_Sail.h"
 #include "MyTimer.h"
 
-int angle;
+int angleGLOBAL;
 
 
-void setTimerEncoderMode() {
+void acqGir_set_timer_encoderMode() {
 	TIMER_ACQ->CNT=0;
 	//On active le mode encoder qui permet de transformer le timer en compteur
 	TIMER_ACQ->SMCR &= ~(1<<2);
@@ -21,29 +21,26 @@ void setTimerEncoderMode() {
 	TIMER_ACQ->ARR = 360;
 }
 
-int sail_angle;
-
-// ON RENTRE PAS DEDANS A REGLER VOIR SI ON FAIT LINTERRUPTION
 void updateAngle(){
-	angle = TIMER_ACQ->CNT;
+	angleGLOBAL = TIMER_ACQ->CNT;
 
 	/* 
-		Appel de la lib set_Sail pour config de la PWM
+		Appel de la lib set_Sail pour émission de la PWM en fonction de l'angle obtenu
 	 */
-	sail_angle = sSail_calc_angle(angle);
-	sSail_set_servo(sail_angle);
+	
+	sSail_set_servo(sSail_calc_angle(angleGLOBAL));
 }
 
-void configGir(GPIO_TypeDef * GPIO, char pin){
+void acqGir_config_Gir(GPIO_TypeDef * GPIO, char pin){
 	while ((GPIO->IDR >> pin) &1 == 0){
 	}
 	TIMER_ACQ->CNT = 0;
-	angle = 0;
+	angleGLOBAL = 0;
 }
 
 
-void interruptAngle(){
-	MyTimer_Base_Init (TIM4,36000,1000);
-	MyTimer_Base_Start (TIM4);
-	MyTimer_ActiveIT(TIM4, 1, updateAngle);
+void acqGir_interrupt_angle(TIM_TypeDef * Timer){
+	MyTimer_Base_Init (Timer,36000,1000);
+	MyTimer_Base_Start (Timer);
+	MyTimer_ActiveIT(Timer, 1, updateAngle);
 }
