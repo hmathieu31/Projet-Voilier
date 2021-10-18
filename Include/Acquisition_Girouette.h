@@ -1,7 +1,7 @@
 /**
  * @file acquisition_Girouette.h
  * @author Antoine Alaverdov (@Piazo)
- * @brief 
+ * @brief Lib to acquire the wind angle. (calls set_Sail)
  * @version 0.1
  * @date 2021-10-18
  * 
