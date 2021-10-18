@@ -6,6 +6,7 @@
 #define acqGirouette
 
 void setTimerEncoderMode();
-int interruptAngle();
+void interruptAngle();
+void configGir(GPIO_TypeDef * GPIO, char pin);
 
 #endif

@@ -24,10 +24,16 @@ void getAngle(){
 	angle = TIMER_ACQ->CNT;
 }
 
+void configGir(GPIO_TypeDef * GPIO, char pin){
+	while (GPIO->IDR << pin == 0){
+	}
+	TIMER_ACQ->CNT = 0;
+	angle = 0;
+}
 
-int interruptAngle(){
+
+void interruptAngle(){
 	MyTimer_Base_Init (TIMER_ACQ,36000,1000);
 	MyTimer_Base_Start (TIMER_ACQ);
 	MyTimer_ActiveIT(TIMER_ACQ, 1, getAngle);
-	return angle;
 }
