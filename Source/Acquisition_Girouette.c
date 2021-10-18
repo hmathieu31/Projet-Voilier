@@ -1,5 +1,6 @@
 #include "stm32f10x.h"
 #include "Acquisition_Girouette.h"
+#include "set_Sail.h"
 #include "MyTimer.h"
 
 int angle;
@@ -20,8 +21,15 @@ void setTimerEncoderMode() {
 	TIMER_ACQ->ARR = 360;
 }
 
-void getAngle(){
+int sail_angle;
+void updateAngle(){
 	angle = TIMER_ACQ->CNT;
+
+	/* 
+		Appel de la lib set_Sail pour config de la PWM
+	 */
+	sail_angle = sSail_calc_angle(angle);
+	sSail_set_servo(sail_angle);
 }
 
 void configGir(GPIO_TypeDef * GPIO, char pin){
@@ -35,5 +43,5 @@ void configGir(GPIO_TypeDef * GPIO, char pin){
 void interruptAngle(){
 	MyTimer_Base_Init (TIMER_ACQ,36000,1000);
 	MyTimer_Base_Start (TIMER_ACQ);
-	MyTimer_ActiveIT(TIMER_ACQ, 1, getAngle);
+	MyTimer_ActiveIT(TIMER_ACQ, 1, updateAngle);
 }
