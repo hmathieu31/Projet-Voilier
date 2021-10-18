@@ -22,6 +22,8 @@ void setTimerEncoderMode() {
 }
 
 int sail_angle;
+
+// ON RENTRE PAS DEDANS A REGLER VOIR SI ON FAIT LINTERRUPTION
 void updateAngle(){
 	angle = TIMER_ACQ->CNT;
 
@@ -33,7 +35,7 @@ void updateAngle(){
 }
 
 void configGir(GPIO_TypeDef * GPIO, char pin){
-	while (GPIO->IDR << pin == 0){
+	while ((GPIO->IDR >> pin) &1 == 0){
 	}
 	TIMER_ACQ->CNT = 0;
 	angle = 0;
@@ -41,7 +43,7 @@ void configGir(GPIO_TypeDef * GPIO, char pin){
 
 
 void interruptAngle(){
-	MyTimer_Base_Init (TIMER_ACQ,36000,1000);
-	MyTimer_Base_Start (TIMER_ACQ);
-	MyTimer_ActiveIT(TIMER_ACQ, 1, updateAngle);
+	MyTimer_Base_Init (TIM4,36000,1000);
+	MyTimer_Base_Start (TIM4);
+	MyTimer_ActiveIT(TIM4, 1, updateAngle);
 }
