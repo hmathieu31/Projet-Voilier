@@ -386,7 +386,7 @@
             <File>
               <FileName>Acquisition_Girouette.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\Acquisition_Girouette.c</FilePath>
+              <FilePath>.\Source\Acquisition_Girouette.c</FilePath>
             </File>
             <File>
               <FileName>main.c</FileName>
@@ -802,7 +802,7 @@
             <File>
               <FileName>Acquisition_Girouette.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\Acquisition_Girouette.c</FilePath>
+              <FilePath>.\Source\Acquisition_Girouette.c</FilePath>
             </File>
             <File>
               <FileName>main.c</FileName>

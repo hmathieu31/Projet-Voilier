@@ -1,11 +1,11 @@
 #include "stm32f10x.h"
 
+#define TIMER_ACQ TIM3
 
 #ifndef acqGirouette
 #define acqGirouette
 
-void setTimerEncoderMode(TIM_TypeDef * Timer);
-int interruptAngle(TIM_TypeDef * Timer);
-void getAngle();
+void setTimerEncoderMode();
+int interruptAngle();
 
 #endif
