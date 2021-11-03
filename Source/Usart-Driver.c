@@ -16,9 +16,13 @@ void MyUSART_Init (USART_TypeDef * Usart) {
 	//first transmission an idle frame TE
 	Usart->CR1 &= ~(0x1 << 3);
 	Usart->CR1 |= (1 << 3); 
+	//mettre le bit RE à 1 pour activer le récepteur
+	Usart->CR1 &= ~(0x1 << 2);
+	Usart->CR1 |= (1<<2);
 }
 
 void MyUSART_Send (USART_TypeDef * Usart, char Data) { //Data sur 8 bits
 	Usart->DR &= ~(0xFF << 0); //255 en décimal
 	Usart->DR |= (Data << 0); 
 }
+

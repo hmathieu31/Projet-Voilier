@@ -2,11 +2,11 @@
 #include "MyTimer.h"
 #include "Driver_GPIO.h"
 #include "Usart-Driver.h"
-
+/*
 void CallBack(){
 	My_GPIO_Toggle(GPIOC, 10);
 }
-
+*/
 int main(void){
 	
 	/* Initialization of GPIOC 13 as Ouput OpenDrain 
@@ -20,7 +20,9 @@ int main(void){
 
 	*/
 	MyUSART_Init(USART1);
-	MyUSART_Send(USART1,54);
+	MyUSART_Send(USART1,70);
+	MyTimer_PWM_StartPWM(TIM1);
+	MyTimer_PWM_SetDC(TIM1, 1, 70);
 	
 	while(1) {
 		//if (GPIOC->IDR[]){
