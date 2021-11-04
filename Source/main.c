@@ -9,4 +9,6 @@ int main(void) {
   //CONFIGURER LE GPIO acqGir_config_Gir(GPIOA, 8);
 	acqGir_interrupt_angle(TIM4);
 
-}
+	while(1){
+	}
+	}

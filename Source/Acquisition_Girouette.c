@@ -7,7 +7,7 @@ int angleGLOBAL;
 
 
 void acqGir_set_timer_encoderMode() {
-	TIMER_ACQ->CNT=0;
+
 	//On active le mode encoder qui permet de transformer le timer en compteur
 	TIMER_ACQ->SMCR &= ~(1<<2);
 	TIMER_ACQ->SMCR |= 3<<0;
@@ -17,8 +17,15 @@ void acqGir_set_timer_encoderMode() {
 	//On enable le counter
 	TIMER_ACQ->CR1 |= 1<<0;
 	
+	TIM2->CCMR1 &= ~(0xf<<4);
+	TIM2->CCMR1 &= ~(0xf<<12); //Compte tous les fronts
+	TIM2->CCMR1 |= 2; // T1FP1 mapped on TI1
+	TIM2->CCMR1 |= (2<<8); // T2FP2 mapped on TI2
+	
 	TIMER_ACQ->PSC = 0;
 	TIMER_ACQ->ARR = 360;
+	
+	TIMER_ACQ->CNT=0;
 }
 
 void updateAngle(){
