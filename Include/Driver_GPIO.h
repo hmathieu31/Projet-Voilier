@@ -45,8 +45,8 @@ typedef struct {
  * 
  * @param GPIOStruct Struct containing the Pin and chosen Configuration 
  */
-void MyGPIO_Init(MyGPIO_Struct * GPIOStruct);
-
+//void MyGPIO_Init(MyGPIO_Struct * GPIOStruct);
+void MyGPIO_Init (GPIO_TypeDef *  GPIO, int pin, char CONF ) ;
 /**
  * @brief Reads the value on GPIO (INPUT mode only)
  * 

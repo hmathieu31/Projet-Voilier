@@ -5,5 +5,7 @@
 
 void MyUSART_Init (USART_TypeDef * Usart);
 void MyUSART_Send (USART_TypeDef * Usart, char Data);
+void USART1_IRQHandler(void);
+void TournerPlateau(void);
 
 #endif

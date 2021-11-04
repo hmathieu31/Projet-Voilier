@@ -1,8 +1,20 @@
 #include "stm32f10x.h"
 #include "Driver_GPIO.h"
 
+void MyGPIO_Init ( GPIO_TypeDef * GPIO , int GPIO_Pin, char CONF ){
+	RCC->APB2ENR |= (0x01 << 2) | (0x01 << 3) | (0x01 << 4) ;
 
-
+	if (GPIO_Pin < 8){ 
+		GPIO->CRL &= ~(0xF << (GPIO_Pin*4));
+		GPIO->CRL |= (CONF << (GPIO_Pin*4)) ;
+		//GPIO->CRL |= (0x1 << (GPIO_Pin*4)) ;| (0x2 <<(GPIO_Pin*4+2));
+	}else{ 
+		GPIO->CRH &= ~(0xF << ((GPIO_Pin-8)*4));
+		GPIO->CRH |= (CONF << ((GPIO_Pin-8)*4));
+		//GPIO->CRH |= (0x1 << (GPIO_Pin*4));
+	}
+}  
+/*
 void MyGPIO_Init(MyGPIO_Struct * GPIOStructPtr) {
 	char GPIO_Pin = GPIOStructPtr->GPIO_Pin;
 	char GPIO_Conf = GPIOStructPtr->GPIO_Conf;
@@ -17,7 +29,7 @@ void MyGPIO_Init(MyGPIO_Struct * GPIOStructPtr) {
 		GPIOStructPtr->GPIO->CRH |= (GPIO_Conf << ((GPIO_Pin - 8)*4)); // Sets the mask
 	}
 }
-
+*/
 // #TODO Check the bits in reading / writing
 int MyGPIO_Read(GPIO_TypeDef * GPIO, char GPIO_PIN) {
 	return (GPIO->IDR << GPIO_PIN);

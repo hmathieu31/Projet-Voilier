@@ -43,7 +43,7 @@ void MyTimer_ActiveIT (TIM_TypeDef * Timer , char Prio, void (* IT_function ) ( 
 	// au niveau du timer
 	// Mettre UIE a 1 ==> declenche l'interruption
 	if(Timer == TIM1){
-		Timer->DIER |= 1<<0 ; //
+		Timer->DIER |= 1<<0 ; 
 	
 		// au niveau du coeur
 		// Mettre a 1 le bit dans le bon ISER ==> autorise le periph a detourner le coeur 28 pour TIM2
@@ -142,6 +142,11 @@ void Init_MyTimer_PWM (TIM_TypeDef * Timer, char Channel) {
 		Timer->CCER |= 1<<12 ;
 	}
 	
+	if (Timer==TIM1)
+	{
+		Timer->BDTR |= 1<<15;
+	}
+	
 }
 // On appelle MyGPIO_Init en demandant de configurer la pin en alternate
 
@@ -164,5 +169,3 @@ void Set_Duty_PWM (TIM_TypeDef * Timer, char Channel, int pourcent) { // Le pour
 	
 	
 }
-
-
