@@ -3,40 +3,29 @@
 #include "Driver_GPIO.h"
 #include "Usart-Driver.h"
 
-void Ma_Fonction_IT (){//fonction callback
-	//utiliser le toggle de gpio
-	My_GPIO_Toggle(GPIOA,5);
-}
-
 //int pourcent ;
 
 
 int main(void){
-	
-	/* Initialization of GPIOC 13 as Ouput OpenDrain 
-	MyGPIO_Struct gp = {GPIOC, 10, AltOut_Ppull};
-	MyGPIO_Init(&gp);
-	
-	// Initialization of Timer1 with period 500ms invoking function Callback /
-	MyTimer_Base_Init (TIM1,36000,1000);
-	MyTimer_Base_Start (TIM1);
-	MyTimer_ActiveIT(TIM1, 1, CallBack);
-
-	*/
-	//MyUSART_Init(USART1);
-	//MyUSART_Send(USART1,70);
-/*	MyTimer_PWM_StartPWM(TIM1);
-	MyTimer_PWM_SetDC(TIM1, 1, 70);
-	Communication();*/
-	// configurer la PWM
-	
-	MyGPIO_Init( GPIOA ,10 ,In_Floating );
-	MyUSART_Init(USART1);
-	
-	MyTimer_Base_Init(TIM1, 9999 , 3599); //ARR et PSC
-	MyGPIO_Init( GPIOA , 8,  AltOut_Ppull );
-	Init_MyTimer_PWM(TIM1,1);
 	//MyTimer_ActiveIT (TIM1 , 1, Ma_Fonction_IT);
+
+	
+	//MyUSART_Init(USART1);
+	//MyGPIO_Init( GPIOA , 8,  AltOut_Ppull ); // Correspond à l'USART
+
+	MyGPIO_Init(GPIOB, 6, AltOut_Ppull); // Correspond à la PWM
+
+	
+	MyTimer_Base_Init(TIM4, 9999 , 3599); //ARR et PSC
+
+	
+	Init_MyTimer_PWM(TIM4,1);
+	
+	
+	
+	//Appeler PWM avec comme argument rapport (qui est en valeur absolue)
+	MyTimer_Base_Start(TIM4);
+	Set_Duty_PWM(TIM4,1,80); //modulo 100
 	
 	
 	while(1) {
@@ -44,7 +33,7 @@ int main(void){
 			//GPIOC->ODR |= (0x01 << 12);
 		//}
 		//Set_Duty_PWM(TIM1,1,pourcent);
-		TournerPlateau();
+		//TournerPlateau();
 	}
 	
 }
