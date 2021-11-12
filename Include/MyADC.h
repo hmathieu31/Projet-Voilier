@@ -1,10 +1,14 @@
 #include "stm32f10x.h"
 
+
+
 #ifndef Roger
 #define Roger
 
-	float Init_ADC_Single_Conv(ADC_TypeDef *ADC, char Channel);
-	
-	
-
+	void Setup_ADC();
+	void ADC_Start_Conversion();
+	void init_ADC(ADC_TypeDef *ADC);
+	void declenchementConversionInterrupt(TIM_TypeDef * Timer);
+		
 #endif
+
