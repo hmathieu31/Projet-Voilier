@@ -36,7 +36,8 @@ int main(void){
 			//GPIOC->ODR |= (0x01 << 12);
 		//}
 		//Set_Duty_PWM(TIM1,1,pourcent);
-		TournerPlateau();
+		
+		//TournerPlateau();
 	}
 	
 }

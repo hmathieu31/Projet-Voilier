@@ -3,7 +3,7 @@
 #include "Driver_GPIO.h"
 #include "MyTimer.h"
 
-signed int recu ;
+signed char recu ;
 
 void MyUSART_Init (USART_TypeDef * Usart) {
 	RCC->APB2ENR |= RCC_APB2ENR_USART1EN;
@@ -38,20 +38,25 @@ void USART1_IRQHandler(void)
 {
 
 	recu = USART1->DR ;
+	TournerPlateau(recu);
 }	
 
 
-void TournerPlateau(void) {
+/** Appelée par l'interruption */
+void TournerPlateau(int valRecue) {
 	//récupérer la valeur du module Xbee
 	//signed int rapport = USART1->DR;
 	//si rapport >0 alors bit PC7 mis à 1
-	if (recu >= 0) {
+	if (valRecue > 0) {
 		My_GPIO_Reset(GPIOC,7);
+		Set_Duty_PWM(TIM4,1,(valRecue % 100));//modulo 100
 	}
-	else { //si rapport <0 alors bit PC7 mis à 0 et rapport = -rapport
+	else if (valRecue < 0) { //si rapport <0 alors bit PC7 mis à 0 et rapport = -rapport
 		My_GPIO_Set(GPIOC,7); //bit de sens
-		recu = -recu;
+		valRecue = -valRecue;
+		Set_Duty_PWM(TIM4,1,(valRecue % 100));//modulo 100
+	} else {
+		Set_Duty_PWM(TIM4,1, 0);
 	}
 	//Appeler PWM avec comme argument rapport (qui est en valeur absolue)
-	Set_Duty_PWM(TIM1,1,(recu % 100));//modulo 100
 }
