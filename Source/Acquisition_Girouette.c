@@ -24,7 +24,11 @@ void acqGir_set_timer_encoderMode() {
     TIMER_ACQ->CNT = 0;
 }
 
-void updateAngle() {
+void interruptFunc() {
+    /**
+     * @brief On standard behaviour, the sail has been trimmed to behaviour
+     * 
+     */
     angleGLOBAL = (TIMER_ACQ->CNT) / 4;
 
     /* 
@@ -32,6 +36,18 @@ void updateAngle() {
 	 */
 
     sSail_set_servo(sSail_calc_angle(angleGLOBAL));
+
+
+    /**
+     * @brief At every interrupt time, we check whether the boat's angle with horizon is safe
+     * 
+     */
+
+    // if (boatInDanger)
+    // {
+    //     sSet_open_sail();
+    // }
+    
 }
 
 void acqGir_config_Gir(GPIO_TypeDef* GPIO, char pin) {
@@ -47,7 +63,7 @@ void acqGir_config_Gir(GPIO_TypeDef* GPIO, char pin) {
 void acqGir_interrupt_angle(TIM_TypeDef* Timer) {
     MyTimer_Base_Init(Timer, 7100, 1000);
     MyTimer_Base_Start(Timer);
-    MyTimer_ActiveIT(Timer, 1, updateAngle);
+    MyTimer_ActiveIT(Timer, 1, interruptFunc);
 }
 
 void gestionVoile_start() {

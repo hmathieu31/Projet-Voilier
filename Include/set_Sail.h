@@ -30,3 +30,9 @@ int sSail_calc_angle(int girAngle);
  * @param sailsAngle Angle to trim the sails to
  */
 void sSail_set_servo(int sailsAngle);
+
+/**
+ * @brief Opens the sail entirely.
+ * 
+ */
+void sSet_open_sail();
