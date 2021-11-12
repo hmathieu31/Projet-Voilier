@@ -17,6 +17,11 @@
  */
 #define TIMER_ACQ TIM3
 
+#define TIMER_PWM TIM2
+#define CHANNEL_PWM 1
+#define GPIO_PWM GPIOA
+#define PIN_PWM 0
+
 #ifndef acqGirouette
 #define acqGirouette
 
@@ -38,10 +43,15 @@ void acqGir_interrupt_angle(TIM_TypeDef * Timer);
 
 /**
  * @brief Waits for the weathercock to turn 360° to finish config.
- * ! Not functional/tested in current state
  * @param GPIO Row on which I is plugged
  * @param pin Pin on which I is plugged
  */
 void acqGir_config_Gir(GPIO_TypeDef * GPIO, char pin);
+
+/**
+ * @brief 
+ * 
+ */
+void gestionVoile_start();
 
 #endif
