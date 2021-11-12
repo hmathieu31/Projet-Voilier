@@ -7,11 +7,9 @@
 
 
 int main(void){
-	//MyTimer_ActiveIT (TIM1 , 1, Ma_Fonction_IT);
 
 	
-	//MyUSART_Init(USART1);
-	//MyGPIO_Init( GPIOA , 8,  AltOut_Ppull ); // Correspond à l'USART
+	MyGPIO_Init( GPIOA , 8,  AltOut_Ppull ); // Correspond à l'USART
 
 	MyGPIO_Init(GPIOB, 6, AltOut_Ppull); // Correspond à la PWM
 
@@ -21,11 +19,14 @@ int main(void){
 	
 	Init_MyTimer_PWM(TIM4,1);
 	
+	MyUSART_Init(USART1);
+
 	
 	
+	/*
 	//Appeler PWM avec comme argument rapport (qui est en valeur absolue)
 	MyTimer_Base_Start(TIM4);
-	Set_Duty_PWM(TIM4,1,80); //modulo 100
+	Set_Duty_PWM(TIM4,1,80); //modulo 100 */
 	
 	
 	while(1) {
