@@ -18,8 +18,10 @@ int main(void){
 
 	
 	Init_MyTimer_PWM(TIM4,1);
+	MyTimer_Base_Start(TIM4);
 	
 	MyUSART_Init(USART1);
+	
 
 	
 	
@@ -34,7 +36,7 @@ int main(void){
 			//GPIOC->ODR |= (0x01 << 12);
 		//}
 		//Set_Duty_PWM(TIM1,1,pourcent);
-		//TournerPlateau();
+		TournerPlateau();
 	}
 	
 }
