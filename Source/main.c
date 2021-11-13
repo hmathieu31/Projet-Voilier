@@ -4,8 +4,8 @@
 #include "MyADC.h"
 
 int main(void) {
-	gestionVoile_start();
-	//init_ADC(ADC1);
+	//gestionVoile_start();
+	init_ADC(ADC1);
 	
 	while (1) {
 	}

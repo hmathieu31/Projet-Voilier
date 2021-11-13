@@ -21,10 +21,15 @@ void ADC_Start_Conversion(){
 	
 }
 
+
+// Ca marche, faut maintenant trouver comment prescaler cette interrup sur l'interruption deja faite dans le acq girouette et ca marche pas sur mon pc je sais pas pourquoi :) :)
+//mais sinon tout niquel
 void declenchementConversionInterrupt(TIM_TypeDef * Timer){
-	MyTimer_ActiveIT(Timer, 1, ADC_Start_Conversion);
-	
+    MyTimer_Base_Init(Timer, 7100, 1000);
+    MyTimer_Base_Start(Timer);
+    MyTimer_ActiveIT(Timer, 1, ADC_Start_Conversion);
 }
+
 
 void init_ADC(ADC_TypeDef *ADCmain){
 	ADC=ADCmain;
