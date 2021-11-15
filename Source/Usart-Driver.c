@@ -49,12 +49,12 @@ void TournerPlateau(signed char valRecue) {
 	//si rapport >0 alors bit PC7 mis à 1
 	if (valRecue > 0) {
 		My_GPIO_Reset(GPIOC,7);
-		Set_Duty_PWM(TIM4,1,(valRecue % 100));//modulo 100
+		Set_Duty_PWM(TIM4,1,(valRecue % 101));//modulo 100
 	}
 	else if (valRecue < 0) { //si rapport <0 alors bit PC7 mis à 0 et rapport = -rapport
 		My_GPIO_Set(GPIOC,7); //bit de sens
 		valRecue = -valRecue;
-		Set_Duty_PWM(TIM4,1,(valRecue % 100));//modulo 100
+		Set_Duty_PWM(TIM4,1,(valRecue % 101));//modulo 100
 	} else {
 		Set_Duty_PWM(TIM4,1, 0);
 	}
@@ -68,7 +68,7 @@ void CapControl_start() {
 	MyGPIO_Init(GPIOC, 7, Out_Ppull); // Correspond au bit de direction
 
 	
-	MyTimer_Base_Init(TIM4, 9999 , 3599); //ARR et PSC pour générer une PWM de 20 kHz
+	MyTimer_Base_Init(TIM4, 359 , 9); //ARR et PSC pour générer une PWM de 20 kHz
 	Init_MyTimer_PWM(TIM4,1);
 	MyTimer_Base_Start(TIM4);
 	
