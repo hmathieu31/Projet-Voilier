@@ -4,8 +4,10 @@
 #include "MyTimer.h"
 #include "set_Sail.h"
 #include "stm32f10x.h"
+#include "MyADC.h"
 
 int angleGLOBAL;
+int interruptGlobal=0;
 
 void acqGir_set_timer_encoderMode() {
     MyTimer_Base_Init(TIMER_ACQ, 1439, 0);
@@ -34,7 +36,13 @@ void interruptFunc() {
     /* 
 		Appel de la lib set_Sail pour émission de la PWM en fonction de l'angle obtenu
 	 */
-
+		interruptGlobal++;
+		if (interruptGlobal == 10){
+			ADC_Start_Conversion();
+			interruptGlobal=0;
+		}
+	
+	
     sSail_set_servo(sSail_calc_angle(angleGLOBAL));
 
 
@@ -53,8 +61,7 @@ void interruptFunc() {
 void acqGir_config_Gir(GPIO_TypeDef* GPIO, char pin) {
     MyGPIO_Struct gpiostruct = {GPIO, pin, In_PullUp};
     MyGPIO_Init(&gpiostruct);
-    while (!MyGPIO_Read(GPIO, pin)) {
-    }
+//    while (!MyGPIO_Read(GPIO, pin)) {}
     MyTimer_Base_Start(TIMER_ACQ);
     TIMER_ACQ->CNT = 0;
     angleGLOBAL = 0;
