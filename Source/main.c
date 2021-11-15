@@ -9,9 +9,10 @@
 int main(void){
 
 	
-	MyGPIO_Init( GPIOA , 8,  AltOut_Ppull ); // Correspond à l'USART
+	MyGPIO_Init( GPIOA , 10,  In_Floating ); // Correspond à l'USART
 
 	MyGPIO_Init(GPIOB, 6, AltOut_Ppull); // Correspond à la PWM
+	MyGPIO_Init(GPIOC, 7, Out_Ppull); // Correspond au bit de direction
 
 	
 	MyTimer_Base_Init(TIM4, 9999 , 3599); //ARR et PSC
