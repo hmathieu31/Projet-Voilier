@@ -20,6 +20,9 @@ void ADC_Start_Conversion(){
 	ADC->CR2 |= (1<<22);
 //	while ((ADC->SR & ADC_SR_EOC) != ADC_SR_EOC){}
 	conversionADC = (ADC->DR);
+	if(conversionADC < 1365){
+		//messageErreur();
+	}
 	//il reste plus qu'a transformer conversion ADC en % de la puissance qu'on veut
 	// et le tour est joué les bg
 }
