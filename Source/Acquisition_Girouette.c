@@ -1,4 +1,4 @@
-#include "acquisition_Girouette.h"
+#include "Acquisition_Girouette.h"
 
 #include "Driver_GPIO.h"
 #include "MyTimer.h"
@@ -35,8 +35,7 @@ void updateAngle() {
 }
 
 void acqGir_config_Gir(GPIO_TypeDef* GPIO, char pin) {
-    MyGPIO_Struct gpiostruct = {GPIO, pin, In_PullUp};
-    MyGPIO_Init(&gpiostruct);
+    MyGPIO_Init(GPIO, pin, In_PullUp);
     while (!MyGPIO_Read(GPIO, pin)) {
     }
     MyTimer_Base_Start(TIMER_ACQ);
@@ -52,6 +51,6 @@ void acqGir_interrupt_angle(TIM_TypeDef* Timer) {
 
 void gestionVoile_start() {
     acqGir_set_timer_encoderMode();
-    acqGir_config_Gir(GPIOA, 8);
-    acqGir_interrupt_angle(TIM4);
+    acqGir_config_Gir(GPIO_INIT, PIN_INIT);
+    acqGir_interrupt_angle(TIM_INTERRUPT_ACQ);
 }

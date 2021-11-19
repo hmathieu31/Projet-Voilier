@@ -11,11 +11,6 @@
 
 #include "stm32f10x.h"
 
-#define TIMER_PWM TIM2
-#define CHANNEL_PWM 1
-#define GPIO_PWM GPIOA
-#define PIN_PWM 0
-
 /**
  * @brief Calculates the angle to trim the sails in function of wind angle
  * 

@@ -1,11 +1,13 @@
 #include "stm32f10x.h" 
+#include "MyTimer.h"
+
 void (* pFnc1) (void) ; /* déclaration d’un pointeur de fonction */
 void (* pFnc2) (void) ; /* déclaration d’un pointeur de fonction */
 void (* pFnc3) (void) ; /* déclaration d’un pointeur de fonction */
 void (* pFnc4) (void) ; /* déclaration d’un pointeur de fonction */
 
 
-void MyTimer_Base_Init(TIM_TypeDef * Timer, int ARR , int PSC){
+void MyTimer_Base_Init(TIM_TypeDef * Timer, unsigned short ARR , unsigned short PSC){
 	/*Création Timer, et on lui donne une horloge*/
 	if(Timer == TIM1){ //TIM1 est sur APB2 les autres sur APB1
 	RCC->APB2ENR |= RCC_APB2ENR_TIM1EN;
@@ -152,7 +154,7 @@ void Init_MyTimer_PWM (TIM_TypeDef * Timer, char Channel) {
 
 //CC3E
 
-void Set_Duty_PWM (TIM_TypeDef * Timer, char Channel, int pourcent) { // Le pourcentage est donnée sous la forme: 90 veut dire 90%
+void Set_Duty_PWM (TIM_TypeDef * Timer, char Channel, unsigned short pourcent) { // Le pourcentage est donnée sous la forme: 90 veut dire 90%
 	
 	if (Channel == 1) {
 		Timer -> CCR1 = (Timer -> ARR) * pourcent / 100 ;

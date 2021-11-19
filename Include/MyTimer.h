@@ -11,7 +11,7 @@ i n f o rm a ti o n s de base
 con f pl u s f i n e s (PWM, codeur i n c . . . )
 *************************************************************************************************
 */
-void MyTimer_Base_Init (TIM_TypeDef * Timer, int ARR , int PSC) ;
+void MyTimer_Base_Init (TIM_TypeDef * Timer, unsigned short ARR , unsigned short PSC) ;
 
 void MyTimer_Base_Start(TIM_TypeDef * Timer) ;
 
@@ -30,5 +30,7 @@ void MyTimer_ActiveIT (TIM_TypeDef * Timer , char Prio, void (* IT_function ) ( 
 void Init_periph (void (* ptrFonction) (void));
 
 void Init_MyTimer_PWM (TIM_TypeDef * Timer, char Channel);
-void Set_Duty_PWM (TIM_TypeDef * Timer, char Channel, int pourcent);
+void Set_Duty_PWM (TIM_TypeDef * Timer, char Channel, unsigned short pourcent);
+
+
 #endif
