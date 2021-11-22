@@ -29,12 +29,10 @@
 
 
 void MyUSART_Init (USART_TypeDef * Usart);
-void MyUSART_Send (USART_TypeDef * Usart, char Data);
+void MyUSART_Send (USART_TypeDef * Usart);
 void USART1_IRQHandler(void);
 void TournerPlateau(signed char recu);
 
 void CapControl_start(void);
-
-void MyUSART_Test_Send(void);
 
 #endif

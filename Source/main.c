@@ -4,10 +4,12 @@
 #include "stm32f10x.h"
 
 int main(void) {
-	// gestionVoile_start();
+//  gestionVoile_start();
 		CapControl_start();
-    MyUSART_Test_Send();
+		MyUSART_Send(USART1);
 
+	
     while (1) {
+
     }
 }
