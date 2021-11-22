@@ -61,7 +61,7 @@ void TournerPlateau(signed char valRecue) {
 void CapControl_start() {
     MyGPIO_Init(GPIO_USART, PIN_USART, In_Floating);  // Correspond � l'USART
     MyGPIO_Init(GPIO_PWM_TURN, PIN_PWM_TURN, AltOut_Ppull);  // Correspond � la PWM
-    MyGPIO_Init(GPIO_PWM_TURN, PIN_TURN_DIR, Out_Ppull);     // Correspond au bit de direction
+    MyGPIO_Init(GPIO_TURN_DIR, PIN_TURN_DIR, Out_Ppull);     // Correspond au bit de direction
 
     MyTimer_Base_Init(TIM_PWM_TURN, 359, 9);  //ARR et PSC pour g�n�rer une PWM de 20 kHz
     Init_MyTimer_PWM(TIM_PWM_TURN, CH_PWM_TURN);
