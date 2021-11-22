@@ -34,3 +34,7 @@ void sSail_set_servo(int sailsAngle) {
     dc = (5 * sailsAngle) / 90 + 5;  // The duty cycle (in %) is func : x -> 5/90 x + 5
     Set_Duty_PWM(TIMER_PWM, CHANNEL_PWM, dc);
 }
+
+void sSail_open_sail() {
+    sSail_set_servo(90);
+}

@@ -1,11 +1,13 @@
 #include "Acquisition_Girouette.h"
 
 #include "Driver_GPIO.h"
+#include "MyADC.h"
 #include "MyTimer.h"
 #include "set_Sail.h"
 #include "stm32f10x.h"
 
 int angleGLOBAL;
+int interruptGlobal = 0;
 
 void acqGir_set_timer_encoderMode() {
     MyTimer_Base_Init(TIMER_ACQ, 1439, 0);
@@ -24,12 +26,14 @@ void acqGir_set_timer_encoderMode() {
     TIMER_ACQ->CNT = 0;
 }
 
-void updateAngle() {
+void interruptFunc() {
     angleGLOBAL = (TIMER_ACQ->CNT) / 4;
 
-    /* 
-		Appel de la lib set_Sail pour émission de la PWM en fonction de l'angle obtenu
-	 */
+    interruptGlobal++;
+    if (interruptGlobal == 10) {
+        ADC_Start_Conversion();
+        interruptGlobal = 0;
+    }
 
     sSail_set_servo(sSail_calc_angle(angleGLOBAL));
 }
@@ -46,7 +50,7 @@ void acqGir_config_Gir(GPIO_TypeDef* GPIO, char pin) {
 void acqGir_interrupt_angle(TIM_TypeDef* Timer) {
     MyTimer_Base_Init(Timer, 7100, 1000);
     MyTimer_Base_Start(Timer);
-    MyTimer_ActiveIT(Timer, 1, updateAngle);
+    MyTimer_ActiveIT(Timer, 1, interruptFunc);
 }
 
 void gestionVoile_start() {
