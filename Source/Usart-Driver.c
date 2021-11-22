@@ -40,7 +40,7 @@ void MyUSART_Init(USART_TypeDef* Usart) {
 void MyUSART_Send(USART_TypeDef* Usart) {  //Data sur 8 bits
 		uint8_t length = 30;
 		char buff[length];
-		sprintf(buff, "Batterie à niveau : %d", 1000);
+		sprintf(buff, "ALERT! LOW BATTERY \n");
 		for(int i = 0; i < length ; i++) {
 			Usart->DR = buff[i];
 			while ((Usart->SR & USART_SR_TXE) != USART_SR_TXE)                           // Polling on TXE to check if data was tranfered

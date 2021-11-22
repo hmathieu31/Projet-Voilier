@@ -2,6 +2,7 @@
 #include "MyADC.h"
 #include "MyTimer.h"
 #include "Acquisition_Girouette.h"
+#include "Usart-Driver.h"
 
 ADC_TypeDef *ADC;
 int conversionADC;
@@ -19,12 +20,12 @@ void Setup_ADC(){
 void ADC_Start_Conversion(){
 	ADC->CR2 |= (1<<22);
 //	while ((ADC->SR & ADC_SR_EOC) != ADC_SR_EOC){}
-	conversionADC = (ADC->DR);
-	if(conversionADC < 1365){
-		//messageErreur();
+	conversionADC = (ADC->DR); //valeur max conversionADC = FFF soit 4095 en decimal
+	if(conversionADC < 2730){
+		MyUSART_Send(USART1);
 	}
 	//il reste plus qu'a transformer conversion ADC en % de la puissance qu'on veut
-	// et le tour est jou� les bg
+	// et le tour est joue les bg
 }
 
 
