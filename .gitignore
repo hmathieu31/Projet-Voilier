@@ -530,3 +530,5 @@ Doc/html/search/close.svg
 Doc/html/search/functions_5.html
 Doc/html/search/functions_5.js
 Doc/html/search/mag_sel.svg
+DebugConfig/Simu_STM32F103RB_1.0.0.dbgconf
+RTE/_Simu/RTE_Components.h
