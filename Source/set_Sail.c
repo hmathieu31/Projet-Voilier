@@ -1,4 +1,5 @@
 #include "set_Sail.h"
+#include "Acquisition_Girouette.h"
 #include "MyTimer.h"
 #include "Driver_GPIO.h"
 
@@ -24,15 +25,14 @@ void sSail_set_servo(int sailsAngle) {
     unsigned short dc; /* Duty cycle to set the servo angle */
 
     /* Setup of PWM and corresponding output Pin*/
-    MyGPIO_Struct gp = {GPIO_PWM, PIN_PWM, AltOut_Ppull};
-    MyGPIO_Init(&gp);
+    MyGPIO_Init(GPIO_PWM, PIN_PWM, AltOut_Ppull);
 
     MyTimer_Base_Init(TIMER_PWM, 1440, 1000);  // Init the PWM with a period of 20ms
-    MyTimer_PWM(TIMER_PWM, CHANNEL_PWM);
-    MyTimer_PWM_StartPWM(TIMER_PWM);
+    Init_MyTimer_PWM(TIMER_PWM, CHANNEL_PWM);
+    MyTimer_Base_Start(TIMER_PWM);
 
     dc = (5 * sailsAngle) / 90 + 5;  // The duty cycle (in %) is func : x -> 5/90 x + 5
-    MyTimer_PWM_SetDC(TIMER_PWM, CHANNEL_PWM, dc);
+    Set_Duty_PWM(TIMER_PWM, CHANNEL_PWM, dc);
 }
 
 void sSail_open_sail() {

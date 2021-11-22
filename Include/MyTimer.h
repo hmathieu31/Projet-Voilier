@@ -1,72 +1,36 @@
-/**
- * @file MyTimer.h
- * @author Hugo Mathieu (hmathieu@insa-toulouse.fr)
- * @brief Driver to control Timers and PWMs
- * @version 0.1
- * @date 2021-10-13
- * 
- * @copyright Copyright (c) 2021
- * 
- */
-#include "stm32f10x.h"
+#ifndef MYTIMER_H
+#define MYTIMER_H
+#include "stm32f10x.h" 
 
-#ifndef Raymond
-#define Raymond
+/*
+*****************************************************************************************
+* @brie f
+* @param -> ParamË t r e sous forme d í une s t r u c t u r e ( son a d re s se ) con ten an t l e s
+i n f o rm a ti o n s de base
+* @Note -> F onc ti on ‡ l a n c e r s y s t Èmatiquement avan t d í a l l e r pl u s en dÈ t a i l dans l e s
+con f pl u s f i n e s (PWM, codeur i n c . . . )
+*************************************************************************************************
+*/
+void MyTimer_Base_Init (TIM_TypeDef * Timer, unsigned short ARR , unsigned short PSC) ;
 
-/**
- * @brief Initializes the selected Timer
- * 
- * @param Timer
- * @param ARRarg Value for the Auto Reload Register
- * @param PSCarg Value for the Prescaler
- */
-void MyTimer_Base_Init ( TIM_TypeDef * Timer, unsigned short ARRarg, unsigned short PSCarg );
+void MyTimer_Base_Start(TIM_TypeDef * Timer) ;
 
-/**
- * @brief Starts the timer
- * 
- * @param Timer 
- */
-void MyTimer_Base_Start (TIM_TypeDef * Timer);
+void MyTimer_Base_Stop(TIM_TypeDef * Timer);
 
-/**
- * @brief Stops the timer
- * 
- * @param Timer 
- */
-void MyTimer_Base_Stop (TIM_TypeDef * Timer);
 
-/**
-	* @brief Active le chanel sp√©cifi√© sur Timer \n
-	* Ne configure pas l'I/O ni ne r√®gle la p√©riode de la PWM
-	* @param Timer Timer1..4 to be configured
-	* @param Channel Channel sp√©cifi√© √† activer
-	*/
-void MyTimer_PWM(TIM_TypeDef * Timer, char Channel);
+/*
+**************************************************************************************************
+* @brie f
+* @param : - TIM_TypeDef * Timer : Timer conce rne
+- cha r P ri o : de 0 a 15
+* @Note : La f o n c ti o n MyTime r_Base_ Ini t d oi t a v oi r e te l a n cee au p r e al a bl e
+**************************************************************************************************
+*/
+void MyTimer_ActiveIT (TIM_TypeDef * Timer , char Prio, void (* IT_function ) ( void )) ;
+void Init_periph (void (* ptrFonction) (void));
 
-/**
- * @brief Starts the PWM on selected Timer
- * 
- * @param Timer 
- */
-void MyTimer_PWM_StartPWM(TIM_TypeDef * Timer);
+void Init_MyTimer_PWM (TIM_TypeDef * Timer, char Channel);
+void Set_Duty_PWM (TIM_TypeDef * Timer, char Channel, unsigned short pourcent);
 
-/**
- * @brief Sets the duty cycle of PWM
- * 
- * @param Timer Timer on which the PWM is based
- * @param Channel Channel used by the PWM
- * @param dc Duty cycle to set
- */
-void MyTimer_PWM_SetDC(TIM_TypeDef * Timer, char Channel, unsigned short dc);
-
-/**
- * @brief Calls the function on Timer's interruption
- * 
- * @param Timer 
- * @param Prio Priority of the interruption
- * @param IT_function Function called on interrupt
- */
-void MyTimer_ActiveIT (TIM_TypeDef * Timer, char Prio, void (*IT_function) (void));
 
 #endif

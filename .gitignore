@@ -134,6 +134,7 @@ Doxyfile.bak
 .vscode/c_cpp_properties.json
 .vscode/extensions.json
 .vscode/settings.json
+<<<<<<< HEAD
 DebugConfig/Reel_STM32F103RB_1.0.0.dbgconf
 DebugConfig/Simule_STM32F103RB_1.0.0.dbgconf
 DebugConfig/Target_1_STM32F103RB_1.0.0.dbgconf
@@ -478,7 +479,6 @@ Doxyfile.bak
 DebugConfig/Reel_STM32F103RB_1.0.0.dbgconf
 DebugConfig/Simule_STM32F103RB_1.0.0.dbgconf
 DebugConfig/Target_1_STM32F103RB_1.0.0.dbgconf
->>>>>>> devBordagePWM
 RTE/Device/STM32F103RB/RTE_Device.h
 RTE/Device/STM32F103RB/startup_stm32f10x_md.s
 RTE/Device/STM32F103RB/system_stm32f10x.c
@@ -530,3 +530,6 @@ Doc/html/search/close.svg
 Doc/html/search/functions_5.html
 Doc/html/search/functions_5.js
 Doc/html/search/mag_sel.svg
+projetVoilier.uvprojx
+DebugConfig/Simu_STM32F103RB_1.0.0.dbgconf
+RTE/_Simu/RTE_Components.h
