@@ -28,11 +28,22 @@ void MyUSART_Init(USART_TypeDef* Usart) {
     //mettre le bit RE � 1 pour activer le r�cepteur
     Usart->CR1 &= ~(0x1 << 2);
     Usart->CR1 |= (1 << 2);
+
+    // Set bit TE to enable transmitter
+    Usart->CR1 |= (0x1 << 3);
 }
 
 void MyUSART_Send(USART_TypeDef* Usart, char Data) {  //Data sur 8 bits
     Usart->DR &= ~(0xFF << 0);                        //255 en d�cimal
     Usart->DR |= (Data << 0);
+    while (!Usart->SR >> 7)                           // Polling on TXE to check if data was tranfered
+    {
+    }
+}
+
+void MyUSART_Test_Send(void) {
+    MyUSART_Send(USART1, 68);
+    MyUSART_Send(USART1, 10);
 }
 
 void USART1_IRQHandler(void) {
@@ -59,7 +70,8 @@ void TournerPlateau(signed char valRecue) {
 }
 
 void CapControl_start() {
-    MyGPIO_Init(GPIO_USART, PIN_USART, In_Floating);  // Correspond � l'USART
+    MyGPIO_Init(GPIO_USART_RX, PIN_USART_RX, In_Floating);  // Correspond � l'USART en RX
+    MyGPIO_Init(GPIO_USART_TX, PIN_USART_TX, Out_Ppull);    // Correspond a l'USART en TX
     MyGPIO_Init(GPIO_PWM_TURN, PIN_PWM_TURN, AltOut_Ppull);  // Correspond � la PWM
     MyGPIO_Init(GPIO_PWM_TURN, PIN_TURN_DIR, Out_Ppull);     // Correspond au bit de direction
 

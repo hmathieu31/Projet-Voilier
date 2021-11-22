@@ -4,8 +4,9 @@
 #include "stm32f10x.h"
 
 int main(void) {
-	gestionVoile_start();
-	CapControl_start();
+	// gestionVoile_start();
+		CapControl_start();
+    MyUSART_Test_Send();
 
     while (1) {
     }

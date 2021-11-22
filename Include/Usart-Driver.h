@@ -22,8 +22,10 @@
 #define GPIO_PWM_TURN GPIOA
 #define PIN_PWM_TURN 1
 
-#define GPIO_USART GPIOA
-#define PIN_USART 10
+#define GPIO_USART_RX GPIOA
+#define PIN_USART_RX 10
+#define GPIO_USART_TX GPIOA
+#define PIN_USART_TX 9
 
 
 void MyUSART_Init (USART_TypeDef * Usart);
@@ -32,5 +34,7 @@ void USART1_IRQHandler(void);
 void TournerPlateau(signed char recu);
 
 void CapControl_start(void);
+
+void MyUSART_Test_Send(void);
 
 #endif
