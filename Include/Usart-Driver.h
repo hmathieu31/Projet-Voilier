@@ -29,7 +29,7 @@
 
 
 void MyUSART_Init (USART_TypeDef * Usart);
-void MyUSART_Send (USART_TypeDef * Usart);
+void MyUSART_Send (USART_TypeDef * Usart, char battery_level);
 void USART1_IRQHandler(void);
 void TournerPlateau(signed char recu);
 

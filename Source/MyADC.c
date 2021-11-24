@@ -24,8 +24,10 @@ void ADC_Start_Conversion(){
 //	while ((ADC->SR & ADC_SR_EOC) != ADC_SR_EOC){}
 	conversionADC = (ADC->DR); //valeur max conversionADC = FFF soit 4095 en decimal
 	if(conversionADC < 2730){
-		MyUSART_Send(USART1);
+		MyUSART_Send(USART1, 0);
 	}
+	char battery_level = (char) (conversionADC * 3) / 100;
+	MyUSART_Send(USART1, battery_level);
 	//il reste plus qu'a transformer conversion ADC en % de la puissance qu'on veut
 	// et le tour est joue les bg
 }

@@ -2,8 +2,8 @@
 
 #include "Driver_GPIO.h"
 #include "MyTimer.h"
-#include "stm32f10x.h"
 #include "stdio.h"
+#include "stm32f10x.h"
 
 signed char recu;
 
@@ -22,13 +22,13 @@ void MyUSART_Init(USART_TypeDef* Usart) {
     //first transmission an idle frame TE
     Usart->CR1 &= ~(0x1 << 3);
     Usart->CR1 |= (1 << 3);
-	
+
     recu = 0;
-	
+
     Usart->CR1 |= 1 << 5;  // RXNEIE
     NVIC->ISER[1] |= 1 << (37 - 32);
     NVIC->IP[USART1_IRQn] = 1 << 4;
-	
+
     //mettre le bit RE a 1 pour activer le recepteur
     Usart->CR1 &= ~(0x1 << 2);
     Usart->CR1 |= (1 << 2);
@@ -37,16 +37,22 @@ void MyUSART_Init(USART_TypeDef* Usart) {
     //Usart->CR1 |= (0x1 << 3);
 }
 
-void MyUSART_Send(USART_TypeDef* Usart) {  //Data sur 8 bits
-		uint8_t length = 30;
-		char buff[length];
-		sprintf(buff, "ALERT! LOW BATTERY \n");
-		for(int i = 0; i < length ; i++) {
-			Usart->DR = buff[i];
-			while ((Usart->SR & USART_SR_TXE) != USART_SR_TXE)                           // Polling on TXE to check if data was tranfered
-			{
-			}
-		}
+void MyUSART_Send(USART_TypeDef* Usart, char battery_level) {  //Data sur 8 bits
+    uint8_t length = 30;
+    char buff[length];
+
+    if (battery_level == 0) {
+        sprintf(buff, "ALERT! LOW BATTERY \n");
+        for (int i = 0; i < length; i++) {
+            Usart->DR = buff[i];
+            while ((Usart->SR & USART_SR_TXE) != USART_SR_TXE)  // Polling on TXE to check if data was tranfered
+            {
+            }
+        }
+    } else
+    {
+        sprintf(buff, "Current battery lvl : %c \n", battery_level);
+    }
 }
 
 void USART1_IRQHandler(void) {
@@ -73,8 +79,8 @@ void TournerPlateau(signed char valRecue) {
 }
 
 void CapControl_start() {
-    MyGPIO_Init(GPIO_USART_RX, PIN_USART_RX, In_Floating);  // Correspond a l'USART en RX
-    MyGPIO_Init(GPIO_USART_TX, PIN_USART_TX, 0xA);    // Correspond a l'USART en TX
+    MyGPIO_Init(GPIO_USART_RX, PIN_USART_RX, In_Floating);   // Correspond a l'USART en RX
+    MyGPIO_Init(GPIO_USART_TX, PIN_USART_TX, 0xA);           // Correspond a l'USART en TX
     MyGPIO_Init(GPIO_PWM_TURN, PIN_PWM_TURN, AltOut_Ppull);  // Correspond a la PWM
     MyGPIO_Init(GPIO_PWM_TURN, PIN_TURN_DIR, Out_Ppull);     // Correspond au bit de direction
 
