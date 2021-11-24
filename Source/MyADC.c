@@ -3,6 +3,7 @@
 #include "MyTimer.h"
 #include "Acquisition_Girouette.h"
 #include "Usart-Driver.h"
+#include "Driver_GPIO.h";
 
 ADC_TypeDef *ADC;
 int conversionADC;
@@ -13,8 +14,9 @@ void Setup_ADC(){
 	RCC->CFGR |= 2<< 14 ; //prescaler 
 	ADC->CR2 |= (1<<0);				//on enable la conversion
 	ADC->CR2 |= (7<<12);			//On met la SWS pour le declenchement de la conversion
-	ADC->SQR3 |= 1<<0;				//on regle sur le channel 1
-	ADC->CR2 |= 1<<20;
+	ADC->SQR3 |= 5<<0;				//on regle sur le channel 5
+	ADC->CR2 |= 1<<20;				// Sets the ADC in external trigger mode
+	MyGPIO_Init(GPIOA, 5, AltOut_Ppull); // Inits the Pin corresponding to channel 5 in ADC1
 }
 
 void ADC_Start_Conversion(){

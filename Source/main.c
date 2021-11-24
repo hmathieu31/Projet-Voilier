@@ -7,7 +7,7 @@
 int main(void) {
 	gestionVoile_start();
     CapControl_start();
-		init_ADC(ADC1);
+    init_ADC(ADC1);
 	
     while (1) {
     }
