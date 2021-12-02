@@ -36,15 +36,15 @@ void updateAngle() {
 
 void acqGir_config_Gir(GPIO_TypeDef* GPIO, char pin) {
     MyGPIO_Init(GPIO, pin, In_PullUp);
-    while (!MyGPIO_Read(GPIO, pin)) {
+    while (!MyGPIO_Read(GPIO, pin)) {//est sense bloquer tant que l'index n'a pas fait un tour
     }
-    MyTimer_Base_Start(TIMER_ACQ);
+    MyTimer_Base_Start(TIMER_ACQ); //et ensuite initialisation de la girouette avecle cnt a 0
     TIMER_ACQ->CNT = 0;
     angleGLOBAL = 0;
 }
 
 void acqGir_interrupt_angle(TIM_TypeDef* Timer) {
-    MyTimer_Base_Init(Timer, 7100, 1000);
+    MyTimer_Base_Init(Timer, 7100, 1000); //interruption tout les 100ms
     MyTimer_Base_Start(Timer);
     MyTimer_ActiveIT(Timer, 1, updateAngle);
 }
